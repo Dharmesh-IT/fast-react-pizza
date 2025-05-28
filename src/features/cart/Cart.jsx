@@ -1,23 +1,25 @@
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
+import LinkButton from "../../ui/LinkButton";
+import Button from "../../ui/Button";
+import CartItem from "./CartItem";
 const fakeCart = [
   {
     pizzaId: 12,
-    name: 'Mediterranean',
+    name: "Mediterranean",
     quantity: 2,
     unitPrice: 16,
     totalPrice: 32,
   },
   {
     pizzaId: 6,
-    name: 'Vegetale',
+    name: "Vegetale",
     quantity: 1,
     unitPrice: 13,
     totalPrice: 13,
   },
   {
     pizzaId: 11,
-    name: 'Spinach and Mushroom',
+    name: "Spinach and Mushroom",
     quantity: 1,
     unitPrice: 15,
     totalPrice: 15,
@@ -28,13 +30,20 @@ function Cart() {
   const cart = fakeCart;
 
   return (
-    <div>
-      <Link to="/menu" className='text-sm text-blue-500 hover:text-blue-700 hover:underline'>&larr; Back to menu</Link>
+    <div className="px-3 py-3">
+      <LinkButton to="/menu">&larr; Back to menu</LinkButton>
 
-      <h2>Your cart, %NAME%</h2>
-
+      <h2 className="text-sl mt-7 font-semibold">Your cart, %NAME%</h2>
+      <ul>
+        {cart.map((item) => (
+          <CartItem key={item.key} item={item} />
+        ))}
+      </ul>
       <div>
-        <Link to="/order/new">Order pizzas</Link>
+        <Button to="/order/new" type="primary">
+          Order pizzas
+        </Button>
+
         <button>Clear cart</button>
       </div>
     </div>
