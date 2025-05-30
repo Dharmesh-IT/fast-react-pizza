@@ -34,17 +34,16 @@ function Cart() {
       <LinkButton to="/menu">&larr; Back to menu</LinkButton>
 
       <h2 className="text-sl mt-7 font-semibold">Your cart, %NAME%</h2>
-      <ul>
+      <ul className="mt-3 divide-y divide-stone-200 border-b">
         {cart.map((item) => (
           <CartItem key={item.key} item={item} />
         ))}
       </ul>
-      <div>
+      <div className="mt-6 space-x-2">
         <Button to="/order/new" type="primary">
           Order pizzas
         </Button>
-
-        <button>Clear cart</button>
+        <Button type={"secondary"}>Clear cart</Button>
       </div>
     </div>
   );
